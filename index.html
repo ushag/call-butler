@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>Call Butler</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Call Butler</h1>
+
+<div id="call-butler">
+    <button id="add">Add</button>
+    <br/>
+
+    <div>
+        <table class="left" id="rounded-corner">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th class="phone">Phone</th>
+                <th>Call On</th>
+                <th>Called On</th>
+                <th></th>
+            </tr>
+        </table>
+        <div id="call-detail" class="left"></div>
+    </div>
+    <!-- _.TEMPLATES -->
+
+    <script type="text/template" id="call-item-tmpl">
+        <td><input type="checkbox" class="done" <% if (called) { %> checked <% } %> ></td>
+        <td><%= name %></td>
+        <td class="phone"><%= phone %></td>
+        <td class="call_on"><%= call_on %></td>
+        <td class="called_on"><%= called_on %></td>
+        <td><input type="submit" class="edit" value="Edit"></td>
+    </script>
+    <script type="text/template" id="call-detail-tmpl">
+        <h3>Call Details</h3>
+        <input name="name" type="text" data-model="name" placeholder="Who do you want to call?" value="<%= name %>"/>
+        <input name="phone" type="text" data-model="phone" placeholder="Enter ph number" value="<%= phone %>"/>
+        <input name="call-on" type="date" data-model="call_on" placeholder="When do you want to call?"
+               value="<%= call_on %>"/>
+        <br/>
+        <textarea name="notes" data-model="notes" placeholder="Notes/Comments"><%= notes %></textarea>
+        <br/>
+        <label>Called On: </label><label><%= called_on %></label>
+        <br/>
+        <hr/>
+        <input type="submit" class="cancel" value="Cancel">
+        <input type="submit" class="save right" value="Save">
+    </script>
+    <!-- JS -->
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <script src="http://stevenlevithan.com/assets/misc/date.format.js"></script>
+    <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+    <script src="js/lib/backbone.localStorage-min.js"></script>
+    <script src="js/models/callItem.js"></script>
+    <script src="js/models/callList.js"></script>
+    <script src="js/views/callItem.js"></script>
+    <script src="js/views/callDetail.js"></script>
+    <script src="js/callButlerApp.js"></script>
+    <script src="js/init.js"></script>
+
+</body>
+</html>
